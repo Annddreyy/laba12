@@ -4,9 +4,27 @@ interface User{
 }
 
 abstract class People implements User{
-    public String FIO;
-    public int age;
-    public String work;
+    private String FIO;
+    private int age;
+    private String work;
+
+    People(String FIO, int age, String work){
+        this.FIO = FIO;
+        this.age = age;
+        this.work = work;
+    }
+
+    public String getFIO(){
+        return this.FIO;
+    }
+
+    public int getAge(){
+        return this.age;
+    }
+
+    public String getWork(){
+        return this.work;
+    }
 }
 
 class Teacher extends People{
@@ -21,9 +39,7 @@ class Teacher extends People{
         this.password = password;
     }
     Teacher(String FIO, int age, String work){
-        this.FIO = FIO;
-        this.age = age;
-        this.work = work;
+        super(FIO, age, work);
     }
 }
 
@@ -39,9 +55,7 @@ class Student extends People{
         this.password = password;
     }
     Student(String FIO, int age, String work){
-        this.FIO = FIO;
-        this.age = age;
-        this.work = work;
+        super(FIO, age, work);
     }
 }
 public class Main {
@@ -51,6 +65,8 @@ public class Main {
 
         Student student1 = new Student("Иванов А. А.", 18, "Студент 1 курса");
         Student student2 = new Student("Петров П. П.", 20, "Студент 2 курса");
+
+        System.out.println(student1.getAge());
 
         teacher1.Login("mail1@mail.ru");
         teacher1.Password("1234567");
